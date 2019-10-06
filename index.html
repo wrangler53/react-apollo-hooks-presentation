@@ -1,49 +1,196 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
 
-		<title>reveal.js</title>
+    <title>React hooks in Apollo Client</title>
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+    <meta
+      name="description"
+      content="A small meetup about new React hooks in Apollo Client"
+    />
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/solarized.css" id="theme" />
 
-		<script src="js/reveal.js"></script>
+    <link rel="stylesheet" href="lib/css/monokai.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+  </head>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true }
-				]
-			});
-		</script>
-	</body>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section class="center">
+          <h2>What the heck is React Apollo hooks?</h2>
+        </section>
+
+        <section class="center">
+          <h3>Agenda</h3>
+          <ol>
+            <li>React popularity</li>
+            <li>About React hooks</li>
+            <li>React hooks for Apollo Client</li>
+            <li>Examples</li>
+            <li>Discussion, Q&A</li>
+          </ol>
+        </section>
+        <section>
+          <h3>React popularity</h2>
+			<section>
+				<img src="./assets/img/react-vue-angular.png">
+			</section>
+			<section>
+				<img src="./assets/img/react-jquery.png">
+			</section>
+			<section>
+				<img src="./assets/img/react-juice.png">
+			</section>
+			<section>
+				<img src="./assets/img/react-memes.png">
+			</section>
+		</section>
+		<section>
+			<h3>About React Hooks</h3>
+			<section class="center">
+				<ul>
+					<li>📅 Release date: Introduced in the end of October, 2018. Released in February, 2019</li>
+					<li>❓Why do we need to use them:
+						<ul>
+							<li>Classes are hard for humans and machines</li>
+							<li>Write less code -> Less bundle size</li>
+							<li>🔥🔥🔥 Avoid Wrapper hell 🔥🔥🔥</li>
+						</ul>
+					</li>
+					<li>Ability to create own hook</li>
+				</ul>
+			</section>	
+			<section class="images-block">
+				<img src="./assets/img/class-component.jpg">
+				<img src="./assets/img/functional-component.jpg">
+			</section>
+            <section class="flex flex_column">
+                <div class="flex">
+                    <div class="block">
+                        <span class="label-middle">Initial size of Counter.js:</span>
+                        <ul>
+                            <li>Class-based: <b>2000 B</b></li>
+                            <li>Hooks based: <b>795 B</b></li>
+                        </ul>
+                        <span class="label-middle">Hooks component: 252% less</span>
+                    </div>
+                    <div class="block">
+                        <span class="label-middle">Size of built js file</span>
+                        <ul>
+                            <li>Class-based: <b>1110 B</b></li>
+                            <li>Hooks based: <b>720 B</b></li> 
+                        </ul>
+                        <span class="label-middle">Hooks project: 154% less</span>
+                    </div>
+                </div>
+                <img src="./assets/joey.jpg" class="fragment" style="width: 60%" alt="">
+            </section>
+            <section class="flex flex_evenly">
+                <ul>
+                    <li>
+                        <span class="large-text">Basic hooks</span>
+                        <ul class="middle-text">
+                            <li>useState</li>
+                            <li>useEffect</li>
+                            <li>useContext</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <span class="large-text">Additional hooks</span>
+                        <ul class="middle-text">
+                            <li>useMemo</li>
+                            <li>useRef</li>
+                            <li>useReducer</li>
+                            <li>useCallback</li>
+                            <li>useLayoutEffect</li>
+                            <li>useImperativeHandle</li>
+                            <li>useDebugValue</li>
+                            <li>useSubscription</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>	
+        </section>
+        <section>
+            <h3>react-apollo@3.0.0</h3>
+            <section>
+                <ul class="middle-text">
+                    <li>📅 August 6, 2019. Release date of react-apollo@3.0.0</li>
+                    <li>Introduced monorepo structure. Packages:
+                        <ul>
+                            <li>@apollo/react-common</li>
+                            <li>@apollo/react-hooks</li>
+                            <li>@apollo/react-components</li>
+                            <li>@apollo/react-hoc</li>
+                            <li>@apollo/react-ssr</li>
+                            <li>@apollo/react-testing (already removed from react-apollo)</li>
+                        </ul>
+                    </li>
+                    <li>Umbrella package react-hooks still on supporting</li>
+                    <li>Removed package compose</li>
+                </ul>
+            </section>
+            <section>
+                🎉🎉🎉 React hooks
+                <ul>
+                    <li>useQuery</li>
+                    <li>useLazyQuery (exists in version 3.0.1 +)</li>
+                    <li>useMutation</li>
+                    <li>useSubscription</li>
+                    <li>useApolloClient</li>
+                </ul>
+            </section>
+            <!-- <span class="middle">&lt;Data, Variables&gt;</span> -->
+        </section>
+        <section class="center">
+            <h1>Q&A</h1>
+        </section>
+        <section class="center">
+            <h1>Thank you for your attention!</h1>
+        </section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+    <script>
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: false,
+        hash: true,
+
+        transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          {
+            src: 'plugin/markdown/marked.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          },
+          {
+            src: 'plugin/markdown/markdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          },
+          { src: 'plugin/highlight/highlight.js', async: true },
+          { src: 'plugin/search/search.js', async: true },
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+  </body>
 </html>

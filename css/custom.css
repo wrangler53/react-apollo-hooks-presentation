@@ -1,0 +1,40 @@
+.images-block {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+}
+
+.images-block img {
+  width: 34% !important;
+  margin-right: 25px !important;
+}
+
+.flex {
+  display: flex !important;
+}
+
+.flex.flex_evenly {
+  justify-content: space-evenly;
+}
+
+.flex.flex_column {
+  flex-direction: column;
+  align-items: center;
+}
+
+.label-middle {
+  display: inline-block !important;
+  font-size: 28px !important;
+}
+
+.large-text {
+  font-size: 32px !important;
+}
+
+.middle {
+  font-size: 28px !important;
+}
+
+.middle-text > li {
+  font-size: 28px !important;
+}

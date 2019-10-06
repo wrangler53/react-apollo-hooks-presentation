@@ -1,24 +1,10 @@
 {
   "name": "reveal.js",
   "version": "3.8.0",
-  "main": [
-    "js/reveal.js",
-    "css/reveal.css"
-  ],
+  "main": ["js/reveal.js", "css/reveal.css"],
   "homepage": "http://revealjs.com",
   "license": "MIT",
-  "description": "The HTML Presentation Framework",
-  "authors": [
-    "Hakim El Hattab <hakim.elhattab@gmail.com>"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/hakimel/reveal.js.git"
-  },
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test"
-  ]
+  "description": "What the heck is React Apollo hooks?",
+  "authors": ["Yaroslav Melnychuk <yaroslav.melnychuk@90poe.io>"],
+  "ignore": ["**/.*", "node_modules", "bower_components", "test"]
 }

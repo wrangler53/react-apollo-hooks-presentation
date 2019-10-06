@@ -1,9 +1,7 @@
 {
   "name": "reveal.js",
   "version": "3.8.0",
-  "description": "The HTML Presentation Framework",
-  "homepage": "http://revealjs.com",
-  "subdomain": "revealjs",
+  "description": "What the heck is React Apollo hooks?",
   "main": "js/reveal.js",
   "scripts": {
     "test": "grunt test",
@@ -11,13 +9,8 @@
     "build": "grunt"
   },
   "author": {
-    "name": "Hakim El Hattab",
-    "email": "hakim.elhattab@gmail.com",
-    "web": "http://hakim.se"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/hakimel/reveal.js.git"
+    "name": "Yaroslav Melnychuk",
+    "email": "yaroslav.melnychuk@90poe.io"
   },
   "engines": {
     "node": ">=9.0.0"
